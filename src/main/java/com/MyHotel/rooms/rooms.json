@@ -1,0 +1,47 @@
+[
+  {
+    "type": "Deluxe",
+    "description": "A luxurious and spacious room with a king-size bed and a view of the city.",
+    "amenities": [
+      "King-size bed",
+      "City view",
+      "Mini-bar"
+    ],
+    "maxOccupancy": 2,
+    "pricePerNight": 200.0
+  },
+  {
+    "type": "Suite",
+    "description": "An extravagant suite with a separate living area and a jacuzzi.",
+    "amenities": [
+      "King-size bed",
+      "City view",
+      "Jacuzzi",
+      "Mini-bar"
+    ],
+    "maxOccupancy": 4,
+    "pricePerNight": 350.0
+  },
+  {
+    "type": "Single",
+    "description": "A cozy single room with a twin-size bed.",
+    "amenities": [
+      "Twin-size bed",
+      "TV",
+      "Desk"
+    ],
+    "maxOccupancy": 1,
+    "pricePerNight": 100.0
+  },
+  {
+    "type": "Double",
+    "description": "A comfortable double room with two twin-size beds.",
+    "amenities": [
+      "Two twin-size beds",
+      "TV",
+      "Desk"
+    ],
+    "maxOccupancy": 2,
+    "pricePerNight": 150.0
+  }
+]
