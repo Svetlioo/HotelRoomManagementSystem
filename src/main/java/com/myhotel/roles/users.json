@@ -1,0 +1,11 @@
+{
+  "users" : [ {
+    "username" : "user1",
+    "password" : "password1",
+    "permissions" : [ "Check availability", "Book a Room" ]
+  }, {
+    "username" : "djami",
+    "password" : "123",
+    "permissions" : [ "Check availability", "Book a Room" ]
+  } ]
+}
