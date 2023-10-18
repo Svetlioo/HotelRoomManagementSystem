@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public interface User {
+
     void bookRoom();
 
     void checkAvailability();
@@ -12,14 +13,9 @@ public interface User {
 
     String getPassword();
 
-    String registerUser(String username, String password);
-
-    boolean loginUser(String username, String password)
-
     ArrayList<String> getHistoryOfBookings();
 
     void addNewBookingToHistory(String BookingInfo);
 
-    void saveUserProfile(User user);
 
 }

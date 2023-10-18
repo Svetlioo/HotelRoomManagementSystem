@@ -1,20 +1,15 @@
 {
-  "users": [
-    {
-      "username": "dgeto",
-      "password": "123"
-    },
-    {
-      "username": "user1",
-      "password": "password1"
-    },
-    {
-      "username": "djami",
-      "password": "123"
-    },
-    {
-      "username": "djamito",
-      "password": "123456"
-    }
-  ]
+  "users" : [ {
+    "username" : "djamaikata",
+    "password" : "123"
+  }, {
+    "username" : "djamito",
+    "password" : "123"
+  }, {
+    "username" : "dgetp",
+    "password" : "3"
+  }, {
+    "username" : "az",
+    "password" : "123"
+  } ]
 }
