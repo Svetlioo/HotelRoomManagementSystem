@@ -1,11 +1,20 @@
 {
-  "users" : [ {
-    "username" : "user1",
-    "password" : "password1",
-    "permissions" : [ "Check availability", "Book a Room" ]
-  }, {
-    "username" : "djami",
-    "password" : "123",
-    "permissions" : [ "Check availability", "Book a Room" ]
-  } ]
+  "users": [
+    {
+      "username": "dgeto",
+      "password": "123"
+    },
+    {
+      "username": "user1",
+      "password": "password1"
+    },
+    {
+      "username": "djami",
+      "password": "123"
+    },
+    {
+      "username": "djamito",
+      "password": "123456"
+    }
+  ]
 }

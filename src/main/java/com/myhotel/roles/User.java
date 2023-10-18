@@ -1,11 +1,25 @@
 package com.myhotel.roles;
 
 import java.util.ArrayList;
+import java.util.Set;
 
-public class User extends Role {
-    protected User(String name, String password, ArrayList<String> allPermissions) {
-        super(name, password, allPermissions);
-        permissions.add("Book a Room");
-        permissions.add("Check availability");
-    }
+public interface User {
+    void bookRoom();
+
+    void checkAvailability();
+
+    String getUsername();
+
+    String getPassword();
+
+    String registerUser(String username, String password);
+
+    boolean loginUser(String username, String password)
+
+    ArrayList<String> getHistoryOfBookings();
+
+    void addNewBookingToHistory(String BookingInfo);
+
+    void saveUserProfile(User user);
+
 }

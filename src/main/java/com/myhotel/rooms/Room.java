@@ -22,10 +22,14 @@ public abstract class Room {
 
 
     public Room(String roomType, int roomNumber) {
-        loadRoomData(roomType, roomNumber);
+        getRoomFromJson(roomType, roomNumber);
     }
 
-    private void loadRoomData(String roomType, int roomNumber) {
+    public Room() {
+
+    }
+
+    private void getRoomFromJson(String roomType, int roomNumber) {
         try {
             File jsonFile = new File("src/main/java/com/myhotel/rooms/roooms.json");
             ObjectMapper objectMapper = new ObjectMapper();
@@ -54,6 +58,7 @@ public abstract class Room {
             throw new RuntimeException(e);
         }
     }
+
 
     private ArrayList<String> convertAmenities(JsonNode amenitiesNode) {
         ArrayList<String> amenities = new ArrayList<>();
