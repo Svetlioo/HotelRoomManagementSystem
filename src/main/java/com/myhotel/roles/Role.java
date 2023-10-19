@@ -1,21 +1,13 @@
 package com.myhotel.roles;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.myhotel.rooms.Room;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Role implements User, Admin {
     private final String userName;
     private final String password;
-    private final ArrayList<String> historyOfBookings;
+    private final ArrayList<Room> historyOfBookings;
 
     public Role(String name, String password) {
         this.userName = name;
@@ -35,12 +27,13 @@ public class Role implements User, Admin {
     }
 
     @Override
-    public ArrayList<String> getHistoryOfBookings() {
+    public ArrayList<Room> getHistoryOfBookings() {
         return this.historyOfBookings;
     }
 
+
     @Override
-    public void addNewBookingToHistory(String BookingInfo) {
+    public void addNewBookingToHistory(Room BookingInfo) {
         this.historyOfBookings.add(BookingInfo);
     }
 

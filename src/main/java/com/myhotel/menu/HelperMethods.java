@@ -11,7 +11,8 @@ public class HelperMethods {
                 6. Update Booking
                 7. View Booking Details
                 8. Logout
-                9. Exit program
+                9. Enter Admin Mode
+                0. Exit the program
                 Enter your choice (1-9):""");
     }
 

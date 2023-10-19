@@ -1,4 +1,4 @@
-package com.myhotel.Logic;
+package com.myhotel.logic;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.myhotel.menu.HelperMethods;
 import com.myhotel.roles.Role;
 import com.myhotel.roles.User;
-import com.myhotel.rooms.BookedRoom;
+import com.myhotel.rooms.Room;
 
 import java.io.File;
 import java.io.IOException;
@@ -87,13 +87,13 @@ public class StateManager {
         this.currentUser = null;
     }
 
-    public void BeforeLoginState() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Hello world!");
-        BookedRoom room = new BookedRoom("RoomDeluxe", 103);
-        System.out.println(room);
-        System.out.println("Welcome to my hotel management system!");
+    public void beforeLoginState() {
 
+//        System.out.println("Hello world!");
+//        BookedRoom room = new BookedRoom("RoomDeluxe", 103);
+//        System.out.println(room);
+//        System.out.println("Welcome to my hotel management system!");
+        Scanner sc = new Scanner(System.in);
         loadUserProfiles();
         boolean isLoggedIn = false;
         while (!isLoggedIn) {
@@ -109,7 +109,7 @@ public class StateManager {
                     isLoggedIn = true;
                     System.out.printf("Successfully logged in as user %s%n", username);
                 } else {
-                    System.out.println("No such user. Try again!");
+                    System.out.println("Incorrect username or password. Try again!");
                 }
             } else if (input.equals("2")) {
                 System.out.println("Enter username:");
@@ -139,22 +139,65 @@ public class StateManager {
         while (true) {
             HelperMethods.showUserChoices();
             String input = sc.nextLine();
-            if (input.equals("9")) {
+            if (input.equals("0")) {
                 System.out.println("Exiting Room Booking System. Goodbye!");
                 System.exit(0);
                 break;
             }
+            RoomBookingManager roombookingmanager = new RoomBookingManager();
+            roombookingmanager.loadAllRoomsToArrays();
+
             switch (input) {
-                case "1":
-                case "2":
-                case "3":
-                case "4":
-                case "5":
-                case "6":
-                case "7":
-                case "8":
-                default:
-                    System.out.println("Invalid choice. Please enter a number from 1 to 9.");
+                case "1" -> {
+                    roombookingmanager.displayAvailableRooms();
+                    System.out.println("Press 0 to go back to main menu!");
+                    String goBack = sc.nextLine();
+                    while (!goBack.equals("0")) {
+                        System.out.println("Press 0 to go back to main menu!");
+                    }
+                }
+                case "2" -> {
+                    roombookingmanager.bookARoom(currentUser);
+                    System.out.println(currentUser.getHistoryOfBookings().get(0).toString());
+                    System.out.println("Press 0 to go back to main menu!");
+                    String goBack = sc.nextLine();
+                    while (!goBack.equals("0")) {
+                        System.out.println("Press 0 to go back to main menu!");
+                    }
+                }
+                case "3" -> {
+
+                }
+                case "4" -> {
+
+                }
+                case "5" -> {
+
+                }
+                case "6" -> {
+
+                }
+                case "7" -> {
+                    int roomNum = 1;
+                    for (Room room : currentUser.getHistoryOfBookings()) {
+                        System.out.printf("Booked room number %d information: %n", roomNum++);
+                        System.out.println(room.toString());
+                    }
+                    System.out.println("Press 0 to go back to main menu!");
+                    String goBack = sc.nextLine();
+                    while (!goBack.equals("0")) {
+                        System.out.println("Press 0 to go back to main menu!");
+                    }
+                }
+                case "8" -> {
+                    this.currentUser = null;
+                    beforeLoginState();
+                }
+                case "9" -> {
+
+                }
+                default -> System.out.println("Invalid choice. Please enter a number from 1 to 9.");
+
             }
         }
     }

@@ -8,10 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class RoomManager {
-    private ArrayList<AvailableRoom> rooms = new ArrayList<>();
+//    private ArrayList<AvailableRoom> rooms = new ArrayList<>();
 //    public void loadRooms() {
 //        try {
-//            File jsonFile = new File("src/main/java/com/myhotel/rooms/roooms.json");
+//            File jsonFile = new File("src/main/java/com/myhotel/rooms/rooms.json");
 //            ObjectMapper objectMapper = new ObjectMapper();
 //            JsonNode jsonData = objectMapper.readTree(jsonFile);
 //            for (JsonNode roomData : jsonData) {

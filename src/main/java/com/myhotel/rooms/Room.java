@@ -9,96 +9,97 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class Room {
-    protected String roomType;
-    protected String description;
-    protected int roomNumber;
-    protected double pricePerNight;
-    protected double cancellationFee;
-    protected ArrayList<String> amenities;
-    protected byte maxOccupancy;
-    protected boolean isAvailable;
-    protected Set<String> roomTypes = new HashSet<>();
+public class Room {
 
 
-    public Room(String roomType, int roomNumber) {
-        getRoomFromJson(roomType, roomNumber);
+    private String roomType;
+    private String description;
+    private double pricePerNight;
+    private double cancellationFee;
+    private ArrayList<String> amenities;
+    private byte maxOccupancy;
+    private int roomNumber;
+    private boolean isAvailable;
+
+
+    public String getRoomType() {
+        return roomType;
     }
 
-    public Room() {
-
+    public String getDescription() {
+        return description;
     }
 
-    private void getRoomFromJson(String roomType, int roomNumber) {
-        try {
-            File jsonFile = new File("src/main/java/com/myhotel/rooms/roooms.json");
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonData = objectMapper.readTree(jsonFile);
-
-            for (JsonNode roomData : jsonData) {
-                if (roomData.get("roomType").asText().equals(roomType)) {
-                    for (JsonNode roomNum : roomData.get("availableRooms")) {
-                        if (roomNum.asInt() == roomNumber) {
-                            this.roomType = roomData.get("roomType").asText();
-                            this.maxOccupancy = (byte) roomData.get("maxOccupancy").asInt();
-                            this.description = roomData.get("description").asText();
-                            this.roomNumber = roomNumber;
-                            this.pricePerNight = roomData.get("pricePerNight").asDouble();
-                            this.cancellationFee = roomData.get("cancellationFee").asDouble();
-                            this.amenities = convertAmenities(roomData.get("amenities"));
-                            this.isAvailable = false;
-                            break;
-                        }
-                    }
-
-                }
-                this.roomTypes.add(roomData.get("roomType").asText());
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public int getRoomNumber() {
+        return roomNumber;
     }
 
+    public double getPricePerNight() {
+        return pricePerNight;
+    }
 
-    private ArrayList<String> convertAmenities(JsonNode amenitiesNode) {
-        ArrayList<String> amenities = new ArrayList<>();
-        for (JsonNode amenity : amenitiesNode) {
-            amenities.add(amenity.asText());
-        }
+    public double getCancellationFee() {
+        return cancellationFee;
+    }
+
+    public ArrayList<String> getAmenities() {
         return amenities;
     }
 
-    public abstract String getRoomType();
+    public byte getMaxOccupancy() {
+        return maxOccupancy;
+    }
 
-    public abstract String getDescription();
+    public boolean isAvailable() {
+        return isAvailable;
+    }
 
-    public abstract int getRoomNumber();
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
 
-    public abstract double getPricePerNight();
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public abstract double getCancellationFee();
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
-    public abstract ArrayList<String> getAmenities();
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
 
-    public abstract byte getMaxOccupancy();
+    public void setCancellationFee(double cancellationFee) {
+        this.cancellationFee = cancellationFee;
+    }
 
-    public abstract boolean isAvailable();
+    public void setAmenities(ArrayList<String> amenities) {
+        this.amenities = amenities;
+    }
+
+    public void setMaxOccupancy(byte maxOccupancy) {
+        this.maxOccupancy = maxOccupancy;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
 
     @Override
-    public String toString() {
-        String availability = isAvailable ? "Available" : "Not Available";
-        return String.format("""
-                        Description: %s
-                        Availability: %s
-                        Room Type: %s
-                        Room Number: %d
-                        Price per Night: $%.2f
-                        Cancellation Fee: $%.2f
-                        Amenities: %s
-                        Max Occupancy: %d
-                        """,
-                description, availability, roomType, roomNumber, pricePerNight, cancellationFee, amenities, maxOccupancy);
-    }
+        public String toString() {
+            String availability = isAvailable ? "Available" : "Not Available";
+            return String.format("""
+                    Description: %s
+                    Availability: %s
+                    Room Type: %s
+                    Room Number: %d
+                    Price per Night: $%.2f
+                    Cancellation Fee: $%.2f
+                    Amenities: %s
+                    Max Occupancy: %d""", description, availability, roomType, roomNumber, pricePerNight, cancellationFee, amenities, maxOccupancy);
+        }
 
 
 }
